@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full-Stack App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="not-authenticated">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#/">Full-Stack App</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item role-logged-out">
+                        <a class="nav-link" href="#/login">Login</a>
+                    </li>
+                    <li class="nav-item role-logged-out">
+                        <a class="nav-link" href="#/register">Register</a>
+                    </li>
+                    <li class="nav-item role-admin">
+                        <a class="nav-link" href="#/employees">Employees</a>
+                    </li>
+                    <li class="nav-item role-admin">
+                        <a class="nav-link" href="#/accounts">Accounts</a>
+                    </li>
+                    <li class="nav-item role-admin">
+                        <a class="nav-link" href="#/departments">Departments</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav role-logged-in">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span id="userDisplayName">Username</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="#/profile">Profile</a></li>
+                            <li><a class="dropdown-item" href="#/requests">My Requests</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#" id="logoutLink">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <!-- Home Page -->
+        <div id="home-page" class="page active">
+            <h1>Welcome to Full-Stack App</h1>
+            <p>This is a prototype application demonstrating full-stack functionality.</p>
+        </div>
+
+        <!-- Register Page -->
+        <div id="register-page" class="page">
+            <h2>Register</h2>
+            <form id="registerForm">
+                <div class="mb-3">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input type="text" class="form-control" id="firstName" required>
+                </div>
+                <div class="mb-3">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password (min 6 characters)</label>
+                    <input type="password" class="form-control" id="password" minlength="6" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+        </div>
+
+        <!-- Verify Email Page -->
+        <div id="verify-email-page" class="page">
+            <h2>Verify Your Email</h2>
+            <div id="verificationMessage" class="alert alert-info">
+                Verification email sent to <span id="verificationEmail"></span>
+            </div>
+            <button id="simulateVerification" class="btn btn-success">✅ Simulate Email Verification</button>
+        </div>
+
+        <!-- Login Page -->
+        <div id="login-page" class="page">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="mb-3">
+                    <label for="loginEmail" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="loginEmail" required>
+                </div>
+                <div class="mb-3">
+                    <label for="loginPassword" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="loginPassword" required>
+                </div>
+                <div id="loginError" class="alert alert-danger" style="display: none;"></div>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+
+        <!-- Profile Page -->
+        <div id="profile-page" class="page">
+            <h2>Profile</h2>
+            <div id="profileContent">
+                <p>Loading profile...</p>
+            </div>
+        </div>
+
+        <!-- Employees Page (Admin) -->
+        <div id="employees-page" class="page">
+            <h2>Employees Management</h2>
+            <div id="employeesContent">
+                <p>Admin employees management will be displayed here.</p>
+            </div>
+        </div>
+
+        <!-- Accounts Page (Admin) -->
+        <div id="accounts-page" class="page">
+            <h2>Accounts Management</h2>
+            <div id="accountsContent">
+                <p>Admin accounts management will be displayed here.</p>
+            </div>
+        </div>
+
+        <!-- Departments Page (Admin) -->
+        <div id="departments-page" class="page">
+            <h2>Departments Management</h2>
+            <div id="departmentsContent">
+                <p>Admin departments management will be displayed here.</p>
+            </div>
+        </div>
+
+        <!-- Requests Page -->
+        <div id="requests-page" class="page">
+            <h2>My Requests</h2>
+            <div id="requestsContent">
+                <p>Your requests will be displayed here.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+</html>
